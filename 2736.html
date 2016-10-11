@@ -1,0 +1,76 @@
+<h1>Errata for Snyder & Southwell, <em>Pro PHP Security</em></h1>
+
+<dl>
+
+<dt><strong>page 37</strong></dt>
+<dd>The following line has a space between &#8220;-p&#8221; and &#8220;$dbpass&#8221; (emphasis added):<br />
+<pre>$command = "$mysqldump -h $dbhost -u $dbuser <strong>-p $dbpass</strong> $database > $path";</pre>
+That space is incorrect; the line should read as follows (emphasis added):<br />
+<pre>$command = "$mysqldump -h $dbhost -u $dbuser <strong>-p$dbpass</strong> $database > $path";</pre>
+Thanks to Eric Knauer for noticing this error.<br />&nbsp;</dd>
+
+<dt><strong>pages 59-60</strong></dt>
+<dd>The list at the bottom of page 59, characterizing the strength of various four-character
+passwords, contains incorrect calculations. The entire section beginning with the words &#8220;But even short
+passwords&#8221; (three lines above the list) and ending with &#8220;patterns greatly reduce
+password strength&#8221; (four lines down on page 60) should be deleted, and replaced with 
+the following:<br />
+<span style="font-family:sans-serif">
+<p>
+Short passwords, even if they are not easily guessable, can provide only minimal protection. Consider the following types of four character passwords:
+</p>
+<ul>
+<li>One made from the letters A-Z all uppercase can have only 26^4 (456,976) combinations, the equivalent of a 19-bit key.</li>
+<li>One made from alphanumeric, upper- and lowercase characters can have only 62^4 combinations, the equivalent of a 24-bit key.</li>
+<li>One made from all ASCII-printable characters including spaces can still have only 94^4 possible combinations, the equivalent of a 26-bit key.</li>
+</ul>
+<p>
+Password security comparable to that provided by the 128-bit standard would require a 20-character password made from all ASCII printable alphanumeric characters including spaces. A similar 10-character password would offer security roughly equivalent to that provided by the now outdated 64-bit standard. This 10-character length is not completely unrealistic, but does exceed most industry expectations.  Requiring a password of even that rather modest length would most likely encourage users to choose easy-to-remember passwords that contain familiar or easy-to-type patterns, which would in turn drastically reduce the strength of the password. Our point is simply to emphasize how weak in general password security is in comparison to that provided by industry-standard encryption keys.
+</p>
+</span>
+Thanks to Todd Anderson for noticing this error.<br />&nbsp;</dd>
+
+<dt><strong>page 95</strong></dt>
+<dd>The last line on the page reads as follows (emphasis added):<br />
+<pre>$cert = openssl_<strong>get_publickey</strong>( $this->certificate );</pre>
+This line should read as follows (emphasis added):<br />
+<pre>$cert = openssl_<strong>openssl_x509_read</strong>( $this->certificate );</pre>
+Thanks to Ted Quinby for noticing this error.<br />&nbsp;</dd>
+
+<dt><strong>page 96</strong></dt>
+<dd>The fourth line on the page reads as follows (emphasis added):<br />
+<pre>openssl_<strong>free_key</strong>( $cert );</pre>
+This line should read as follows (emphasis added):<br />
+<pre>openssl_<strong>x509_free</strong>( $cert );</pre>
+Thanks to Ted Quinby for noticing this error.<br />&nbsp;</dd>
+
+<dt><strong>page 98</strong></dt>
+<dd>The ninth line from the bottom reads as follows (emphasis added):<br />
+<pre>if ( empty( $this-><strong>privatekey</strong> ) ) {</pre>
+This line should read as follows (emphasis added):<br />
+<pre>if ( empty( $this-><strong>certificate</strong> ) ) {</pre>
+Thanks to Ted Quinby for noticing this error.<br />&nbsp;</dd>
+
+<dt><strong>page 204</strong></dt>
+<dd>In the <em>ssoClient.php</em> script fragments appearing on this page, 
+the variables $clientUrl and $serverUrl should be corrected
+to <strong>$clientURI</strong> and <strong>$serverURI</strong>.<br />
+<br />
+For consistency, the variables $clientUrl and $serverUrl in the <em>ssoServer.php</em>
+script on pages 205-206 may be changed to <strong>$clientURI</strong> (once on page 205
+and twice on page 206) and <strong>$serverURI</strong> (once on page 205 and once on page 206).
+<br />
+Thanks to Ted Quinby for noticing this error.<br />&nbsp;</dd>
+
+<dt><strong>pages 250-253</strong></dt>
+<dd>The last line on page 250 lists the following as an attempted MySQL injection:<br />
+<pre>lagrein' or 1=1;</pre>
+This injection is then presented two more times on page 251, one more time on page 252, and two more times
+on page 253.<br />
+<br />
+The punctuation in the attempted injection is incorrect; 
+it should read as follows all five times (emphasis added):<br />
+<pre>lagrein' or <strong>'1</strong>=1</pre>
+Thanks to Alice Rhodes for noticing this error.<br />&nbsp;</dd>
+
+</dl>

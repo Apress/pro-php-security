@@ -1,0 +1,55 @@
+Port 22
+
+# sample addresses only, change for your own needs!
+ListenAddress 127.0.0.1
+ListenAddress 192.168.123.45
+
+# restrict access and protocol level
+AllowGroups ssh wheel
+PermitRootLogin no
+Protocol 2
+
+# HostKey locations for protocol version 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+
+# specify encryption and MAC algorithms
+Ciphers aes256-cbc,3des-cbs,blowfish-cbc
+MACs hmac-sha1,hmac-ripemd160,hmac-md5
+
+# select authentication preferences
+PubkeyAuthentication yes
+PasswordAuthentication yes
+HostbasedAuthentication no
+UsePAM no
+
+# disable ssh-agent forwarding
+ForwardAgent no
+
+## Defaults - uncomment to change
+#
+#UsePrivilegeSeparation yes
+#SyslogFacility AUTH
+#LogLevel INFO
+#StrictModes yes
+#
+#AuthorizedKeysFile %h/.ssh/authorized_keys
+#
+#PermitEmptyPasswords no
+#ChallengeResponseAuthentication yes
+#
+X11Forwarding no
+#X11DisplayOffset 10
+
+# information (banner and message of the day), and robust connections
+Banner /etc/issue.net
+PrintMotd yes
+PrintLastLog yes
+KeepAlive yes
+
+# prevent guessers
+LoginGraceTime 30
+MaxStartups 5
+
+# sftp support
+Subsystem sftp /usr/lib/sftp-server
